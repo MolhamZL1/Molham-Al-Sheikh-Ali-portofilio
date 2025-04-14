@@ -1,10 +1,30 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Sun, Moon, Github, Linkedin, Instagram, Facebook, Mail, Phone, Download, ExternalLink, MapPin, PlayCircle, Store } from 'lucide-react';
+import { Sun, Moon, Github, Linkedin, Instagram, Facebook, Mail, Phone, Download, ExternalLink, MapPin, PlayCircle, Store, MessageCircle } from 'lucide-react';
 import { userInfo } from './data/userInfo';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [loadingText, setLoadingText] = useState('');
+
+  useEffect(() => {
+    const texts = ['Initializing...', 'Compiling...', 'Building UI...', 'Deploying...'];
+    let currentIndex = 0;
+
+    const textInterval = setInterval(() => {
+      setLoadingText(texts[currentIndex]);
+      currentIndex = (currentIndex + 1) % texts.length;
+    }, 500);
+
+    // Simulate loading time
+    setTimeout(() => {
+      clearInterval(textInterval);
+      setLoading(false);
+    }, 2000);
+
+    return () => clearInterval(textInterval);
+  }, []);
 
   useEffect(() => {
     if (darkMode) {
@@ -31,7 +51,62 @@ function App() {
 
   const socialIconHover = {
     hover: { scale: 1.2, rotate: 5 }
-  };
+  }; 
+  
+  if (loading) {
+    return (
+      <div className="h-screen bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          className="relative w-24 h-24 mb-8"
+        >
+          {/* Code brackets animation */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+            className="absolute text-4xl text-blue-600 font-mono left-0"
+          >
+            {'<'}
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+            className="absolute text-4xl text-blue-600 font-mono right-0"
+          >
+            {'>'}
+          </motion.div>
+          {/* Flutter logo animation */}
+          <motion.div
+            animate={{ 
+              rotate: 360,
+              scale: [1, 1.2, 1],
+            }}
+            transition={{ 
+              duration: 2,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+            className="absolute inset-0 flex items-center justify-center"
+          >
+            <div className="w-12 h-12 bg-blue-500 rounded-lg transform rotate-45" />
+          </motion.div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+          className="text-blue-600 dark:text-blue-400 font-mono text-lg"
+        >
+          {loadingText}
+        </motion.div>
+      </div>
+    );
+  }
+   const whatsappUrl = `https://wa.me/${userInfo.social.whatsapp.replace(/[^0-9]/g, '')}`;
+
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
@@ -65,8 +140,11 @@ function App() {
                   { icon: Linkedin, url: userInfo.social.linkedin },
                   { icon: Instagram, url: userInfo.social.instagram },
                   { icon: Facebook, url: userInfo.social.facebook },
+                 // { icon: , url: userInfo.social.facebook },
                   { icon: Mail, url: `mailto:${userInfo.email}` },
-                  { icon: Phone, url: `tel:${userInfo.phone}` }
+                  { icon: Phone, url: `tel:${userInfo.phone}` },
+                  { icon: MessageCircle, url: whatsappUrl },
+               //   { icon: Telegram, url: telegramUrl }
                 ].map((social, index) => (
                   <motion.a
                     key={index}
@@ -318,6 +396,17 @@ function App() {
                 <Phone className="w-5 h-5 mr-2" />
                 {userInfo.phone}
               </motion.a>
+              <motion.a
+                variants={fadeIn}
+                whileHover={{ scale: 1.05, x: 10 }}
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400"
+              >
+                <MessageCircle className="w-5 h-5 mr-2" />
+                WhatsApp
+              </motion.a>
             </motion.div>
             <motion.div 
               variants={staggerContainer}
@@ -330,7 +419,10 @@ function App() {
                 { icon: Github, url: userInfo.social.github },
                 { icon: Linkedin, url: userInfo.social.linkedin },
                 { icon: Instagram, url: userInfo.social.instagram },
-                { icon: Facebook, url: userInfo.social.facebook }
+                { icon: Facebook, url: userInfo.social.facebook },
+               
+              
+                
               ].map((social, index) => (
                 <motion.a
                   key={index}

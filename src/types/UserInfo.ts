@@ -13,6 +13,7 @@ export interface UserInfo {
     linkedin: string;
     instagram: string;
     facebook: string;
+    whatsapp: string;
     telegram: string;
   };
   projects: Project[];

@@ -6,7 +6,8 @@ export const userInfo: UserInfo = {
   title: "Flutter Developer",
   bio: "Passionate Flutter developer with 2+ years of experience in creating beautiful, high-performance mobile applications. Specialized in building cross-platform solutions that deliver exceptional user experiences.",
   email: "molhamsa49@gmail.com",
-  phone: "+963 988159532",
+  phone: "+963 998194404",
+
   location: "Damascus, Syria",
   profileImage: `${import.meta.env.BASE_URL}images/profile.jpg`,
   resumeUrl: `${import.meta.env.BASE_URL}images/cv.pdf`,
@@ -28,7 +29,8 @@ export const userInfo: UserInfo = {
     linkedin: "https://www.linkedin.com/in/molham-al-sheikh-ali-684982268/",
     instagram: "https://www.instagram.com/molhamsheikh/",
     facebook: "https://www.facebook.com/molhamslsh.alshihali/",
-    telegram:"https://t.me/MolhamSheikh"
+    telegram:"https://t.me/MolhamSheikh",
+    whatsapp:"+963 988159532"
   },
   projects: [
     {
