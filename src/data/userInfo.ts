@@ -1,4 +1,5 @@
 import { UserInfo } from '../types/UserInfo';
+import profileImage from './images/profile.jpg';
 
 export const userInfo: UserInfo = {
   name: "Molham Al-Sheikh Ali",
@@ -7,18 +8,20 @@ export const userInfo: UserInfo = {
   email: "molhamsa49@gmail.com",
   phone: "+963 988159532",
   location: "Damascus, Syria",
-  profileImage: "src/data/images/profile.jpg",
+  profileImage: profileImage,
   resumeUrl: "src/data/images/cv.pdf",
   skills: [
     "Flutter",
     "Dart",
     "Firebase",
+    "Responsive & Adaptive UI",
     "REST APIs",
     "State Management",
     "Bloc,Cubit",
     "CI/CD",
     "Git",
-    "GitHub"
+    "GitHub", 
+    "OOP","C++","Java","Algorithms","Data Structures"
   ],
   social: {
     github: "https://github.com/MolhamZL1",
