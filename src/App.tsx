@@ -178,7 +178,7 @@ function App() {
         initial="hidden"
         animate="visible"
         variants={fadeIn}
-        className="pt-24 pb-12 px-6"
+        className="pt-32 pb-12 px-6"
       >
         <div className="container mx-auto max-w-4xl">
           <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
