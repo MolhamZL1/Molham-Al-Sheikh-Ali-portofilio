@@ -8,7 +8,7 @@ export const userInfo: UserInfo = {
   email: "molhamsa49@gmail.com",
   phone: "+963 988159532",
   location: "Damascus, Syria",
-  profileImage: profileImage,
+  profileImage: "images/profile.jpg",
   resumeUrl: "src/data/images/cv.pdf",
   skills: [
     "Flutter",
