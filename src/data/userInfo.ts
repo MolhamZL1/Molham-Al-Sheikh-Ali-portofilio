@@ -4,7 +4,7 @@ import { UserInfo } from '../types/UserInfo';
 export const userInfo: UserInfo = {
   name: "Molham Al-Sheikh Ali",
   title: "Flutter Developer",
-  bio: "Passionate Flutter developer with 2+ years of experience in creating beautiful, high-performance mobile applications. Specialized in building cross-platform solutions that deliver exceptional user experiences.",
+  bio: "4th year Softwate Engineer Student at Damascus University, Flutter developer with 2+ years of experience in creating beautiful, high-performance mobile applications. Specialized in building cross-platform solutions that deliver exceptional user experiences.",
   email: "molhamsa49@gmail.com",
   phone: "+963 998194404",
 
