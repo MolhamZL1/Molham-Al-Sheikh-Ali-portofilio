@@ -4,13 +4,13 @@ import { UserInfo } from '../types/UserInfo';
 export const userInfo: UserInfo = {
   name: "Molham Al-Sheikh Ali",
   title: "Flutter Developer",
-  bio: "4th year Softwate Engineer Student at Damascus University, Flutter developer with 2+ years of experience in creating beautiful, high-performance mobile applications. Specialized in building cross-platform solutions that deliver exceptional user experiences.",
+  bio: "5th year Softwate Engineer Student at Damascus University, Flutter developer with 2+ years of experience in creating beautiful, high-performance mobile applications. Specialized in building cross-platform solutions that deliver exceptional user experiences.",
   email: "molhamsa49@gmail.com",
-  phone: "+963 998194404",
+  phone: "+963 988159532",
 
   location: "Damascus, Syria",
   profileImage: `${import.meta.env.BASE_URL}images/profile.jpg`,
-  resumeUrl: `${import.meta.env.BASE_URL}images/resume.pdf`,
+  resumeUrl: `https://drive.google.com/file/d/11erGG9v8TAdoX38hK1wZvUzScqyBgHO9/view?usp=sharing`,
   skills: [
     "Flutter",
     "Dart",
@@ -33,6 +33,26 @@ export const userInfo: UserInfo = {
     whatsapp:"+963 988159532"
   },
   projects: [
+     {
+      title: "BitarMed",
+      description: "BitarMed is a mobile application designed for browsing, purchasing, and renting medical devices. The app features an AI-powered chatbot, Gemini, to assist users in finding the right products. Users can submit and track maintenance requests, manage their profiles, and receive real-time updates on orders and rentals. The app supports both Arabic (RTL) and English (LTR) languages and offers a dark/light mode for better user experience.",
+      technologies: ["Flutter", "Express js", "PostgreSQL", "Clean Architecture","Cubit"],
+      features: [ 
+        "Browse and purchase medical devices With Gemini Ai Chatbot",
+        "Rent devices for a specific period",
+        "Submit and track maintenance requests",
+        "Track orders and rentals in real-time",
+        "Push & in-app notifications",
+        "Manage user profile and settings",
+        "Wishlist (favorite devices)",
+        "Dark/Light mode",
+        "Supports Arabic (RTL) & English (LTR)"
+      ],
+      imageUrl: `${import.meta.env.BASE_URL}images/BitarMed.png`,
+      // playStoreUrl: "",
+      // appStoreUrl: "",
+      githubUrl: "https://github.com/MolhamZL1/MedTechMobile"
+    },
     {
       title: "Safar Way(Dashboard)",
       description: "Safar Way is a tourism app that allows users to search for places of interest in Syria, and book trips and tours. The app provides a platform for users to discover and explore new places, and to book their trips and tours easily. The app also allows users to rate and review their experiences, in order to help other users make informed decisions when planning their trips.",
@@ -46,7 +66,7 @@ export const userInfo: UserInfo = {
         "Cloud storage",
         "User authentication",
       ],
-      imageUrl: `${import.meta.env.BASE_URL}images/safarway_dashboard.jpg`,
+      imageUrl: `${import.meta.env.BASE_URL}images/safarway_dashboard.png`,
       // playStoreUrl: "",
       // appStoreUrl: "",
       githubUrl: "https://github.com/MolhamZL1/tourism_app"
@@ -63,7 +83,7 @@ export const userInfo: UserInfo = {
         "Push notifications",
         "Cloud storage",
       ],
-      imageUrl:  `${import.meta.env.BASE_URL}images/icon_chat_app.png`,
+      imageUrl:  `${import.meta.env.BASE_URL}images/chat_app_screens.png`,
     //  playStoreUrl: "",
    //   appStoreUrl: "",
       githubUrl: "https://github.com/MolhamZL1/chatti"
@@ -83,7 +103,7 @@ export const userInfo: UserInfo = {
         "Order history",
         "Order details",
       ],
-      imageUrl:  `${import.meta.env.BASE_URL}images/roesmaryIcon.png`,
+      imageUrl:  `${import.meta.env.BASE_URL}images/roesmary.png`,
       // playStoreUrl: "https://play.google.com/store/apps/details?id=com.example.smarthome",
       // appStoreUrl: "https://apps.apple.com/app/smarthome",
       githubUrl: "https://github.com/MolhamZL1/Rosemary"
