@@ -1,27 +1,40 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Sun, Moon, Github, Linkedin, Instagram, Facebook, Mail, Phone, Download, ExternalLink, MapPin, PlayCircle, Store, MessageCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Sun, Moon ,  Download, MapPin, Code, Layers, Database, Smartphone, Settings } from 'lucide-react';
+import {
+  SiGithub,
+  SiLinkedin,
+  SiInstagram,
+  SiFacebook,
+  SiWhatsapp,
+  SiTelegram,
+} from "react-icons/si";
+import { MdEmail } from "react-icons/md";
 import { userInfo } from './data/userInfo';
+import { ParticleBackground } from './components/ParticleBackground';
+import { ProjectModal } from './components/ProjectModal';
+import { Project } from './types/UserInfo';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   const [loading, setLoading] = useState(true);
   const [loadingText, setLoadingText] = useState('');
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    const texts = ['Initializing...', 'Compiling...', 'Building UI...', 'Deploying...'];
+    const texts = ['Initializing...', 'Loading modules...', 'Compiling code...', 'Deploying...'];
     let currentIndex = 0;
 
     const textInterval = setInterval(() => {
       setLoadingText(texts[currentIndex]);
       currentIndex = (currentIndex + 1) % texts.length;
-    }, 500);
+    }, 600);
 
-    // Simulate loading time
     setTimeout(() => {
       clearInterval(textInterval);
       setLoading(false);
-    }, 2000);
+    }, 2500);
 
     return () => clearInterval(textInterval);
   }, []);
@@ -35,7 +48,7 @@ function App() {
   }, [darkMode]);
 
   const fadeIn = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 }
   };
 
@@ -49,86 +62,114 @@ function App() {
     }
   };
 
-  const socialIconHover = {
-    hover: { scale: 1.2, rotate: 5 }
-  }; 
-  
+  const openProjectModal = (project: Project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const closeProjectModal = () => {
+    setIsModalOpen(false);
+    setTimeout(() => setSelectedProject(null), 300);
+  };
+
   if (loading) {
     return (
-      <div className="h-screen bg-gray-50 dark:bg-gray-900 flex flex-col items-center justify-center">
+      <div className="h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 flex flex-col items-center justify-center">
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="relative w-24 h-24 mb-8"
+          className="relative w-32 h-32 mb-8"
         >
-          {/* Code brackets animation */}
+          {/* Animated code brackets */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
-            className="absolute text-4xl text-blue-600 font-mono left-0"
+            transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
+            className="absolute text-6xl text-blue-400 font-mono left-0 top-1/2 -translate-y-1/2"
           >
             {'<'}
           </motion.div>
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
-            className="absolute text-4xl text-blue-600 font-mono right-0"
+            transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
+            className="absolute text-6xl text-blue-400 font-mono right-0 top-1/2 -translate-y-1/2"
           >
             {'>'}
           </motion.div>
-          {/* Flutter logo animation */}
+          {/* Center rotating element */}
           <motion.div
             animate={{ 
               rotate: 360,
-              scale: [1, 1.2, 1],
+              scale: [1, 1.1, 1],
             }}
             transition={{ 
-              duration: 2,
+              duration: 3,
               repeat: Infinity,
               ease: "linear"
             }}
             className="absolute inset-0 flex items-center justify-center"
           >
-            <div className="w-12 h-12 bg-blue-500 rounded-lg transform rotate-45" />
+            <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl transform rotate-45" />
           </motion.div>
         </motion.div>
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.3 }}
-          className="text-blue-600 dark:text-blue-400 font-mono text-lg"
+          transition={{ duration: 0.5 }}
+          className="text-blue-300 font-mono text-xl tracking-wider"
         >
           {loadingText}
         </motion.div>
+        <motion.div
+          initial={{ width: 0 }}
+          animate={{ width: "200px" }}
+          transition={{ duration: 2, ease: "easeInOut" }}
+          className="h-1 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mt-4"
+        />
       </div>
     );
   }
-   const whatsappUrl = `https://wa.me/${userInfo.social.whatsapp.replace(/[^0-9]/g, '')}`;
 
+  const whatsappUrl = `https://wa.me/${userInfo.phone.replace(/[^0-9]/g, '')}`;
+  const telegramUrl = `https://t.me/${userInfo.telegram}`;
+
+  const skillIcons = {
+    'Frontend': Code,
+    'Backend': Layers,
+    'Mobile': Smartphone,
+    'Database': Database,
+    'Tools & DevOps': Settings
+  };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8 }}
+      className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 text-white relative overflow-hidden"
+    >
+      <ParticleBackground />
+      
       {/* Header */}
       <motion.header 
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ type: "spring", stiffness: 100 }}
-        className="fixed w-full bg-white dark:bg-gray-800 shadow-sm z-50"
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
+        className="fixed w-full bg-black/20 backdrop-blur-md border-b border-white/10 z-40"
       >
         <div className="container mx-auto px-6 py-4">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <motion.h1 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-2xl font-bold text-gray-800 dark:text-white"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3 }}
+              className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
             >
               {userInfo.name}
             </motion.h1>
             
             <div className="flex items-center justify-between md:justify-end gap-6">
-              {/* Social Links */}
               <motion.div 
                 variants={staggerContainer}
                 initial="hidden"
@@ -136,15 +177,13 @@ function App() {
                 className="flex space-x-4"
               >
                 {[
-                  { icon: Github, url: userInfo.social.github },
-                  { icon: Linkedin, url: userInfo.social.linkedin },
-                  { icon: Instagram, url: userInfo.social.instagram },
-                  { icon: Facebook, url: userInfo.social.facebook },
-                 // { icon: , url: userInfo.social.facebook },
-                  { icon: Mail, url: `mailto:${userInfo.email}` },
-                  { icon: Phone, url: `tel:${userInfo.phone}` },
-                  { icon: MessageCircle, url: whatsappUrl },
-               //   { icon: Telegram, url: telegramUrl }
+                  { icon: SiGithub, url: userInfo.social.github },
+                  { icon: SiLinkedin, url: userInfo.social.linkedin },
+                  { icon: SiInstagram, url: userInfo.social.instagram },
+                  { icon: SiFacebook, url: userInfo.social.facebook },
+                  { icon: MdEmail, url: `mailto:${userInfo.email}` },
+                  { icon: SiWhatsapp, url: whatsappUrl },
+                  { icon: SiTelegram, url: telegramUrl }
                 ].map((social, index) => (
                   <motion.a
                     key={index}
@@ -152,22 +191,14 @@ function App() {
                     target="_blank"
                     rel="noopener noreferrer"
                     variants={fadeIn}
-                    whileHover="hover"
-                    variants={socialIconHover}
-                    className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
+                    whileHover={{ scale: 1.2, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="text-gray-300 hover:text-white transition-colors p-2 rounded-lg hover:bg-white/10"
                   >
                     <social.icon className="w-5 h-5" />
                   </motion.a>
                 ))}
               </motion.div>
-              
-              <motion.button
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setDarkMode(!darkMode)}
-                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
-              >
-                {darkMode ? <Sun className="w-5 h-5 text-yellow-500" /> : <Moon className="w-5 h-5 text-gray-600" />}
-              </motion.button>
             </div>
           </div>
         </div>
@@ -178,39 +209,79 @@ function App() {
         initial="hidden"
         animate="visible"
         variants={fadeIn}
-        className="pt-32 pb-12 px-6"
+        className="pt-32 pb-20 px-6 relative z-10"
       >
-        <div className="container mx-auto max-w-4xl">
-          <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
+        <div className="container mx-auto max-w-6xl">
+          <div className="flex flex-col lg:flex-row items-center gap-12 mb-16">
             <motion.div 
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{ type: "spring", stiffness: 100 }}
-              className="w-48 h-48 rounded-full overflow-hidden shadow-xl"
+              initial={{ scale: 0, rotate: -180 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{ type: "spring", stiffness: 100, delay: 0.3 }}
+              className="relative"
             >
-              <img 
-                src={userInfo.profileImage} 
-                alt={userInfo.name} 
-                className="w-full h-full object-cover"
+              <div className="w-64 h-64 rounded-full overflow-hidden shadow-2xl ring-4 ring-blue-500/30">
+                <img 
+                  src={userInfo.profileImage} 
+                  alt={userInfo.name} 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute -inset-4 rounded-full border-2 border-dashed border-blue-500/30"
               />
             </motion.div>
+            
             <motion.div 
               variants={fadeIn}
-              className="flex-1 text-center md:text-left"
+              className="flex-1 text-center lg:text-left"
             >
-              <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">{userInfo.title}</h2>
-              <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">{userInfo.bio}</p>
-              <div className="flex items-center justify-center md:justify-start gap-2 text-gray-600 dark:text-gray-300 mb-6">
-                <MapPin className="w-5 h-5" />
-                <span>{userInfo.location}</span>
-              </div>
+              <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.4 }}
+                className="text-5xl lg:text-6xl font-bold mb-4"
+              >
+                <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
+                  {userInfo.title}
+                </span>
+              </motion.h2>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.5 }}
+                className="text-xl text-blue-300 mb-6 font-medium"
+              >
+                {userInfo.subtitle}
+              </motion.p>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+                className="text-lg text-gray-300 mb-8 leading-relaxed max-w-2xl"
+              >
+                {userInfo.bio}
+              </motion.p>
               <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7 }}
+                className="flex items-center justify-center lg:justify-start gap-2 text-gray-300 mb-8"
+              >
+                <MapPin className="w-5 h-5 text-blue-400" />
+                <span>{userInfo.location}</span>
+              </motion.div>
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 }}
                 whileHover={{ scale: 1.05 }}
-                className="flex justify-center md:justify-start space-x-4"
+                className="flex justify-center lg:justify-start"
               >
                 <a
                   href={userInfo.resumeUrl}
-                  className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-xl font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
                   download
                 >
                   <Download className="w-5 h-5 mr-2" />
@@ -219,44 +290,68 @@ function App() {
               </motion.div>
             </motion.div>
           </div>
-          
-          {/* Skills Section */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg"
-          >
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Technical Skills</h3>
-            <motion.div 
-              variants={staggerContainer}
-              initial="hidden"
-              animate="visible"
-              className="flex flex-wrap gap-3"
-            >
-              {userInfo.skills.map((skill, index) => (
-                <motion.span
-                  key={index}
-                  variants={fadeIn}
-                  whileHover={{ scale: 1.1 }}
-                  className="px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 rounded-full text-sm font-medium"
-                >
-                  {skill}
-                </motion.span>
-              ))}
-            </motion.div>
-          </motion.div>
         </div>
       </motion.section>
 
+      {/* Skills Section */}
+      <section className="py-20 px-6 relative z-10">
+        <div className="container mx-auto max-w-6xl">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
+          >
+            Technical Expertise
+          </motion.h2>
+          <motion.div 
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            {userInfo.skillCategories.map((category, index) => {
+              const IconComponent = skillIcons[category.name as keyof typeof skillIcons] || Code;
+              return (
+                <motion.div
+                  key={index}
+                  variants={fadeIn}
+                  whileHover={{ y: -10, scale: 1.02 }}
+                  className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-blue-500/30 transition-all duration-300"
+                >
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl flex items-center justify-center mr-4">
+                      <IconComponent className="w-6 h-6 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-white">{category.name}</h3>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {category.skills.map((skill, skillIndex) => (
+                      <motion.span
+                        key={skillIndex}
+                        whileHover={{ scale: 1.1 }}
+                        className="px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm font-medium border border-blue-500/30 hover:bg-blue-500/30 transition-colors"
+                      >
+                        {skill}
+                      </motion.span>
+                    ))}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
+      </section>
+
       {/* Projects Section */}
-      <section className="py-12 px-6 bg-white dark:bg-gray-800">
+      <section className="py-20 px-6 relative z-10">
         <div className="container mx-auto max-w-7xl">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center"
+            className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
           >
             Featured Projects
           </motion.h2>
@@ -271,81 +366,47 @@ function App() {
               <motion.div
                 key={index}
                 variants={fadeIn}
-                whileHover={{ y: -10 }}
-                className="bg-gray-50 dark:bg-gray-700 rounded-xl overflow-hidden shadow-lg flex flex-col"
+                whileHover={{ y: -10, scale: 1.02 }}
+                onClick={() => openProjectModal(project)}
+                className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:border-blue-500/30 transition-all duration-300 cursor-pointer group"
               >
-                <div className="h-48">
-                  <img src={project.imageUrl} alt={project.title} className="w-full h-full object-cover" />
-                </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{project.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow">{project.description}</p>
-                  
-                  <div className="mb-4">
-                    <h4 className="text-sm font-semibold text-gray-900 dark:text-white mb-2">Key Features:</h4>
-                    <ul className="list-disc list-inside space-y-1 text-gray-600 dark:text-gray-300">
-                      {project.features.slice(0, 3).map((feature, i) => (
-                        <li key={i}>{feature}</li>
-                      ))}
-                    </ul>
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={project.imageUrl} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <span className="px-3 py-1 bg-blue-500/80 text-white rounded-full text-sm font-medium">
+                      {project.category}
+                    </span>
                   </div>
-
-                  <motion.div 
-                    variants={staggerContainer}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    className="flex flex-wrap gap-2 mb-4"
-                  >
-                    {project.technologies.map((tech, i) => (
-                      <motion.span
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-300 mb-4 line-clamp-2">{project.shortDescription}</p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.technologies.slice(0, 3).map((tech, i) => (
+                      <span
                         key={i}
-                        variants={fadeIn}
-                        whileHover={{ scale: 1.1 }}
-                        className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 rounded-full text-sm"
+                        className="px-2 py-1 bg-blue-500/20 text-blue-300 rounded-lg text-xs font-medium"
                       >
                         {tech}
-                      </motion.span>
+                      </span>
                     ))}
-                  </motion.div>
+                    {project.technologies.length > 3 && (
+                      <span className="px-2 py-1 bg-gray-500/20 text-gray-300 rounded-lg text-xs">
+                        +{project.technologies.length - 3} more
+                      </span>
+                    )}
+                  </div>
 
-                  <div className="flex flex-wrap gap-4 mt-auto pt-4 border-t border-gray-200 dark:border-gray-600">
-                    {project.playStoreUrl && (
-                      <motion.a
-                        whileHover={{ scale: 1.1 }}
-                        href={project.playStoreUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-green-600 dark:text-green-400 hover:underline"
-                      >
-                        <PlayCircle className="w-4 h-4 mr-1" />
-                        Play Store
-                      </motion.a>
-                    )}
-                    {project.appStoreUrl && (
-                      <motion.a
-                        whileHover={{ scale: 1.1 }}
-                        href={project.appStoreUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:underline"
-                      >
-                        <Store className="w-4 h-4 mr-1" />
-                        App Store
-                      </motion.a>
-                    )}
-                    {project.githubUrl && (
-                      <motion.a
-                        whileHover={{ scale: 1.1 }}
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center text-gray-600 dark:text-gray-400 hover:underline"
-                      >
-                        <Github className="w-4 h-4 mr-1" />
-                        Source Code
-                      </motion.a>
-                    )}
+                  <div className="text-blue-400 text-sm font-medium group-hover:text-blue-300 transition-colors">
+                    Click to view details →
                   </div>
                 </div>
               </motion.div>
@@ -359,42 +420,36 @@ function App() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="py-12 px-6"
+        className="py-20 px-6 relative z-10"
       >
         <div className="container mx-auto max-w-4xl">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center"
+            className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
           >
-            Contact Me
+            Let's Connect
           </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <motion.div 
               variants={staggerContainer}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="space-y-4"
+              className="space-y-6"
             >
               <motion.a
                 variants={fadeIn}
                 whileHover={{ scale: 1.05, x: 10 }}
                 href={`mailto:${userInfo.email}`}
-                className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                className="flex items-center text-gray-300 hover:text-blue-400 transition-colors p-4 rounded-xl bg-white/5 hover:bg-white/10"
               >
-                <Mail className="w-5 h-5 mr-2" />
-                {userInfo.email}
-              </motion.a>
-              <motion.a
-                variants={fadeIn}
-                whileHover={{ scale: 1.05, x: 10 }}
-                href={`tel:${userInfo.phone}`}
-                className="flex items-center text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
-              >
-                <Phone className="w-5 h-5 mr-2" />
-                {userInfo.phone}
+                <MdEmail className="w-6 h-6 mr-4" />
+                <div>
+                  <p className="font-semibold">Email</p>
+                  <p className="text-sm opacity-80">{userInfo.email}</p>
+                </div>
               </motion.a>
               <motion.a
                 variants={fadeIn}
@@ -402,10 +457,27 @@ function App() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400"
+                className="flex items-center text-gray-300 hover:text-green-400 transition-colors p-4 rounded-xl bg-white/5 hover:bg-white/10"
               >
-                <MessageCircle className="w-5 h-5 mr-2" />
-                WhatsApp
+                <SiWhatsapp className="w-6 h-6 mr-4" />
+                <div>
+                  <p className="font-semibold">WhatsApp</p>
+                  <p className="text-sm opacity-80">Let's chat</p>
+                </div>
+              </motion.a>
+              <motion.a
+                variants={fadeIn}
+                whileHover={{ scale: 1.05, x: 10 }}
+                href={telegramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center text-gray-300 hover:text-blue-400 transition-colors p-4 rounded-xl bg-white/5 hover:bg-white/10"
+              >
+                <SiTelegram className="w-6 h-6 mr-4" />
+                <div>
+                  <p className="font-semibold">Telegram</p>
+                  <p className="text-sm opacity-80">Quick messages</p>
+                </div>
               </motion.a>
             </motion.div>
             <motion.div 
@@ -413,29 +485,32 @@ function App() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="flex justify-center md:justify-end space-x-6"
+              className="flex flex-col justify-center items-center space-y-8"
             >
-              {[
-                { icon: Github, url: userInfo.social.github },
-                { icon: Linkedin, url: userInfo.social.linkedin },
-                { icon: Instagram, url: userInfo.social.instagram },
-                { icon: Facebook, url: userInfo.social.facebook },
-               
-              
-                
-              ].map((social, index) => (
-                <motion.a
-                  key={index}
-                  variants={fadeIn}
-                  whileHover={{ scale: 1.2, rotate: 5 }}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
-                >
-                  <social.icon className="w-6 h-6" />
-                </motion.a>
-              ))}
+              <div className="text-center">
+                <h3 className="text-2xl font-bold text-white mb-4">Ready to collaborate?</h3>
+                <p className="text-gray-300 mb-6">Let's build something amazing together</p>
+              </div>
+              <div className="flex justify-center space-x-6">
+                {[
+                  { icon: SiGithub, url: userInfo.social.github, color: 'hover:text-gray-400' },
+                  { icon: SiLinkedin, url: userInfo.social.linkedin, color: 'hover:text-blue-400' },
+                  { icon: SiInstagram, url: userInfo.social.instagram, color: 'hover:text-pink-400' },
+                  { icon: SiFacebook, url: userInfo.social.facebook, color: 'hover:text-blue-500' }
+                ].map((social, index) => (
+                  <motion.a
+                    key={index}
+                    variants={fadeIn}
+                    whileHover={{ scale: 1.3, y: -5 }}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`text-gray-400 ${social.color} transition-colors p-3 rounded-xl bg-white/5 hover:bg-white/10`}
+                  >
+                    <social.icon className="w-8 h-8" />
+                  </motion.a>
+                ))}
+              </div>
             </motion.div>
           </div>
         </div>
@@ -446,13 +521,19 @@ function App() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        className="bg-white dark:bg-gray-800 py-6"
+        className="bg-black/20 backdrop-blur-sm py-8 relative z-10"
       >
-        <div className="container mx-auto px-6 text-center text-gray-600 dark:text-gray-300">
-          <p>© {new Date().getFullYear()} {userInfo.name}. All rights reserved.</p>
+        <div className="container mx-auto px-6 text-center text-gray-400">
+          <p>© {new Date().getFullYear()} {userInfo.name}. Crafted with passion and code.</p>
         </div>
       </motion.footer>
-    </div>
+
+      <ProjectModal 
+        project={selectedProject}
+        isOpen={isModalOpen}
+        onClose={closeProjectModal}
+      />
+    </motion.div>
   );
 }
 

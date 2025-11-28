@@ -1,44 +1,122 @@
 import { UserInfo } from '../types/UserInfo';
 
-
 export const userInfo: UserInfo = {
   name: "Molham Al-Sheikh Ali",
-  title: "Flutter Developer",
-  bio: "5th year Softwate Engineer Student at Damascus University, Flutter developer with 2+ years of experience in creating beautiful, high-performance mobile applications. Specialized in building cross-platform solutions that deliver exceptional user experiences.",
+  title: "Software Engineer",
+  subtitle: "Software Engineer Focused on Mobile & Web Development",
+  bio: "Software Engineering professional with over 2 years of experience creating beautiful, high-performance mobile applications. Specialized in building cross-platform solutions with Flutter that deliver exceptional user experiences, while applying solid software engineering principles, clean architecture, and best practices.",
   email: "molhamsa49@gmail.com",
   phone: "+963 988159532",
-
+  telegram: "MolhamSheikh",
   location: "Damascus, Syria",
   profileImage: `${import.meta.env.BASE_URL}images/profile.jpg`,
-  resumeUrl: `https://drive.google.com/file/d/11erGG9v8TAdoX38hK1wZvUzScqyBgHO9/view?usp=sharing`,
-  skills: [
-    "Flutter",
-    "Dart",
-    "Firebase",
-    "Responsive & Adaptive UI",
-    "REST APIs",
-    "State Management",
-    "Bloc,Cubit",
-    "CI/CD",
-    "Git",
-    "GitHub", 
-    "OOP","C++","Java","Algorithms","Data Structures"
+  resumeUrl: "https://drive.google.com/file/d/11erGG9v8TAdoX38hK1wZvUzScqyBgHO9/view?usp=sharing",
+
+  skillCategories: [
+    {
+      name: "Frontend",
+      icon: "🎨",
+      skills: [
+        "Flutter",
+        "Responsive & Adaptive UI",
+        "REST API Integration",
+        "State Management (Bloc, Cubit)",
+        "Clean Architecture",
+        "Animations & Transitions"
+      ]
+    },
+    {
+      name: "Backend",
+      icon: "⚙️",
+      skills: [
+        "Express.js",
+        "Laravel",
+        "Node.js",
+        
+        "API Design",
+        "Authentication & Authorization"
+      ]
+    },
+    {
+      name: "Mobile",
+      icon: "📱",
+      skills: [
+        "Flutter",
+        "Dart",
+        "Cross-platform Development",
+        "Push & In-App Notifications",
+        "App Architecture",
+        "Multi-language (RTL & LTR) Support"
+      ]
+    },
+    {
+      name: "Database",
+      icon: "🗄️",
+      skills: [
+        "PostgreSQL",
+        "SQL",
+        "Firebase",
+        "Supabase",
+        "Database Design",
+        "Cloud Storage"
+      ]
+    },
+    {
+      name: "Tools & DevOps",
+      icon: "🛠️",
+      skills: [
+        "Git",
+        "GitHub",
+        "CI/CD",
+        "Linux",
+        "Agile Practices",
+        "Testing",
+      ]
+    },
+    {
+      name: "Computer Science",
+      icon: "🧠",
+      skills: [
+        "OOP",
+        "C++",
+        "Java",
+        "Algorithms",
+        "Data Structures"
+      ]
+    }
   ],
+
   social: {
     github: "https://github.com/MolhamZL1",
     linkedin: "https://www.linkedin.com/in/molham-al-sheikh-ali-684982268/",
     instagram: "https://www.instagram.com/molhamsheikh/",
-    facebook: "https://www.facebook.com/molhamslsh.alshihali/",
-    telegram:"https://t.me/MolhamSheikh",
-    whatsapp:"+963 988159532"
+    facebook: "https://www.facebook.com/molhamslsh.alshihali/"
   },
+
   projects: [
-     {
+    {
+      id: "bitarmed",
       title: "BitarMed",
-      description: "BitarMed is a mobile application designed for browsing, purchasing, and renting medical devices. The app features an AI-powered chatbot, Gemini, to assist users in finding the right products. Users can submit and track maintenance requests, manage their profiles, and receive real-time updates on orders and rentals. The app supports both Arabic (RTL) and English (LTR) languages and offers a dark/light mode for better user experience.",
-      technologies: ["Flutter", "Express js", "PostgreSQL", "Clean Architecture","Cubit"],
-      features: [ 
-        "Browse and purchase medical devices With Gemini Ai Chatbot",
+      shortDescription:
+        "A cross-platform medical devices app for browsing, purchasing, renting, and managing maintenance with AI-powered assistance.",
+      fullDescription:
+        "BitarMed is a mobile application designed for browsing, purchasing, and renting medical devices. The app features an AI-powered chatbot (Gemini) to help users find the right products, submit and track maintenance requests, manage their profiles, and receive real-time updates on orders and rentals. It supports both Arabic (RTL) and English (LTR) and includes dark/light mode for an enhanced user experience.",
+      myRole: "Flutter Developer & Mobile App Architect",
+      category: "Mobile Application",
+      duration: "Commercial Project",
+      teamSize: "Team project",
+      technologies: [
+        "Flutter",
+        "Dart",
+        "Express.js",
+        "PostgreSQL",
+        "Clean Architecture",
+        "Cubit",
+        "REST APIs",
+        "Notifications"
+      ],
+      features: [
+        "Browse and purchase medical devices with Gemini AI chatbot assistance",
         "Rent devices for a specific period",
         "Submit and track maintenance requests",
         "Track orders and rentals in real-time",
@@ -48,65 +126,118 @@ export const userInfo: UserInfo = {
         "Dark/Light mode",
         "Supports Arabic (RTL) & English (LTR)"
       ],
+      screenshots: [
+        `${import.meta.env.BASE_URL}images/BitarMed.png`,
+       
+      ],
       imageUrl: `${import.meta.env.BASE_URL}images/BitarMed.png`,
-      // playStoreUrl: "",
-      // appStoreUrl: "",
       githubUrl: "https://github.com/MolhamZL1/MedTechMobile"
     },
     {
-      title: "Safar Way(Dashboard)",
-      description: "Safar Way is a tourism app that allows users to search for places of interest in Syria, and book trips and tours. The app provides a platform for users to discover and explore new places, and to book their trips and tours easily. The app also allows users to rate and review their experiences, in order to help other users make informed decisions when planning their trips.",
-      technologies: ["Flutter", "Laravel", "SQL", "Clean Architecture","Cubit"],
+      id: "safar-way-dashboard",
+      title: "Safar Way (Dashboard)",
+      shortDescription:
+        "Tourism management dashboard for trips, places, bookings, and user reviews in Syria.",
+      fullDescription:
+        "Safar Way is a tourism platform that allows users to search for places of interest in Syria and book trips and tours. The dashboard provides tools for managing trips, places, bookings, and user feedback. It enables admins or operators to manage tourism content, monitor reservations, and support a better travel planning experience.",
+      myRole: "Flutter Developer (Dashboard Frontend)",
+      category: "Web Dashboard / Mobile Integration",
+      duration: "Academic Project",
+      teamSize: "Team project",
+      technologies: [
+        "Flutter",
+        "Laravel",
+        "SQL",
+        "Clean Architecture",
+        "Cubit",
+        "REST APIs",
+        "Cloud Storage"
+      ],
       features: [
-        "Trips booking",
-        "Places search",
-        "Places booking",
+        "Trips booking management",
+        "Places search and browsing",
+        "Places booking management",
         "Reviews and ratings",
         "Push notifications",
-        "Cloud storage",
-        "User authentication",
+        "Cloud storage integration",
+        "User authentication"
+      ],
+      screenshots: [
+        `${import.meta.env.BASE_URL}images/safarway_dashboard.png`,
       ],
       imageUrl: `${import.meta.env.BASE_URL}images/safarway_dashboard.png`,
-      // playStoreUrl: "",
-      // appStoreUrl: "",
       githubUrl: "https://github.com/MolhamZL1/tourism_app"
     },
     {
+      id: "chatti",
       title: "Chatti",
-      description: "A chat app built with Flutter that includes video and audio calls, along with media sharing, allows users to send pictures, videos, and audio files while chatting. Users can start voice or video calls, switch between them during the call, and share media easily. The app is designed to provide smooth communication and secure connections, with notifications and login features. It’s a complete platform for chatting, talking live, and sharing media with friends.",
-      technologies: ["Flutter", "Firebase","Supabase", "Zego Cloud","Clean Architecture", "Cubit"],
+      shortDescription:
+        "Real-time chat application with voice/video calls and rich media sharing built with Flutter.",
+      fullDescription:
+        "Chatti is a real-time chat application built with Flutter that supports text messaging, voice calls, video calls, and media sharing. Users can send images, videos, and audio files, start voice or video calls, switch between them during a call, and receive notifications. The app focuses on smooth communication, secure connections, and a complete modern messaging experience.",
+      myRole: "Flutter Developer",
+      category: "Mobile Application",
+      duration: "Personal Project",
+      teamSize: "Solo project",
+      technologies: [
+        "Flutter",
+        "Dart",
+        "Firebase",
+        "Supabase",
+        "Zego Cloud",
+        "Clean Architecture",
+        "Cubit",
+        "Push Notifications"
+      ],
       features: [
         "Real-time chat",
-        "vedio,audio calls", 
-        "media Sharing",
+        "Video and audio calls",
+        "Media sharing (images, videos, audio files)",
         "User authentication",
         "Push notifications",
-        "Cloud storage",
+        "Cloud storage"
       ],
-      imageUrl:  `${import.meta.env.BASE_URL}images/chat_app_screens.png`,
-    //  playStoreUrl: "",
-   //   appStoreUrl: "",
+      screenshots: [
+        `${import.meta.env.BASE_URL}images/chat_app_screens.png`,
+        `${import.meta.env.BASE_URL}images/chat_app_screens.png`
+      ],
+      imageUrl: `${import.meta.env.BASE_URL}images/chat_app_screens.png`,
       githubUrl: "https://github.com/MolhamZL1/chatti"
     },
-  
     {
+      id: "rosemary",
       title: "Roesmary",
-      description: "An e-commerce app built with Flutter for selling medical products. The app allows users to register and login, browse products by category, view product details, add products to cart, checkout, and track their orders. The app also includes features such as product search, product reviews, and ratings. The app is designed to provide a seamless and secure online shopping experience for medical products.",
-      technologies: ["Flutter", "Cubit", "Laravel", "Clean Architecture"],
+      shortDescription:
+        "E-commerce mobile app for selling medical products with cart, checkout, and order tracking.",
+      fullDescription:
+        "Roesmary is an e-commerce application built with Flutter for selling medical products. Users can register, log in, browse products by category, view product details, add items to their cart, checkout, and track their orders. The app supports product search, reviews, ratings, and provides a seamless and secure shopping experience for medical products.",
+      myRole: "Flutter Developer",
+      category: "Mobile E-commerce Application",
+      duration: "Personal Project",
+      teamSize: "Solo project",
+      technologies: [
+        "Flutter",
+        "Dart",
+        "Cubit",
+        "Laravel",
+        "Clean Architecture",
+        "REST APIs"
+      ],
       features: [
         "User authentication",
         "Product search",
         "Product reviews and ratings",
         "Add products to cart",
-        "Checkout",
-        "Track orders",
-        "Order history",
-        "Order details",
+        "Checkout flow",
+        "Order tracking",
+        "Order history and details"
       ],
-      imageUrl:  `${import.meta.env.BASE_URL}images/roesmary.png`,
-      // playStoreUrl: "https://play.google.com/store/apps/details?id=com.example.smarthome",
-      // appStoreUrl: "https://apps.apple.com/app/smarthome",
+      screenshots: [
+        `${import.meta.env.BASE_URL}images/roesmary.png`,
+      
+      ],
+      imageUrl: `${import.meta.env.BASE_URL}images/roesmary.png`,
       githubUrl: "https://github.com/MolhamZL1/Rosemary"
     }
   ]
-}
+};
