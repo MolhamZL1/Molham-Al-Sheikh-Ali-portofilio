@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon ,  Download, MapPin, Code, Layers, Database, Smartphone, Settings } from 'lucide-react';
+import {  Download, MapPin, Code, Layers, Database, Smartphone, Settings } from 'lucide-react';
 import {
   SiGithub,
   SiLinkedin,
