@@ -94,6 +94,86 @@ export const userInfo: UserInfo = {
   },
 
   projects: [
+   {
+  id: "Sajilha",
+  title: "Sajilha",
+  shortDescription:
+"Sajelha is the electronic debt ledger for shop owners.",
+  fullDescription:"Instead of relying on a paper ledger or your memory, gather all your customers' debts in one organized place. Know exactly who owes you, how much, and when the last payment was due. Never miss a payment again with automatic reminders sent to your customers via SMS or WhatsApp. Keep your cash flow steady and your business thriving.",
+  myRole: "Flutter Developer & Mobile App Architect",
+  category: "Mobile Application",
+  duration: "Commercial Project",
+  teamSize: "Team project",
+  technologies: [
+    "Flutter",
+    "Dart",
+    "Laravel",
+    "mySQL",
+    "Clean Architecture",
+    "Cubit",
+    "REST APIs",
+   
+  ],
+  features: [
+    "Add & manage customers and their debts",
+    "Record payments and update debt status",
+    "Automatic payment reminders via SMS or WhatsApp",
+    "View debt history and reports",
+    "Manage user profile and settings",
+    "Dark/Light mode",
+    "Supports Arabic (RTL) & English (LTR)"
+  ],
+  screenshots: [
+    `${import.meta.env.BASE_URL}images/sajilha/all.png`,
+      `${import.meta.env.BASE_URL}images/sajilha/1.png`,
+       `${import.meta.env.BASE_URL}images/sajilha/2.png`,
+  ],
+  imageUrl: `${import.meta.env.BASE_URL}images/sajilha/all.png`,
+  liveUrl: "https://sajilha-landing-page-8f577e8d9a56.hosted.ghaymah.systems"
+
+},
+{
+  id: "Complains System",
+  title: "Complains System",
+  shortDescription:
+    "A cross-platform government complaints app for submitting, tracking, and managing public service complaints with smart assistance.",
+  fullDescription:
+    "Complains System is a mobile application for submitting and tracking government service complaints. Users can create complaints, attach evidence (images/files), follow complaint status updates in real time, and receive notifications when the complaint is assigned, updated, or resolved. The app supports both Arabic (RTL) and English (LTR) and includes dark/light mode for a better user experience.",
+  myRole: "Flutter Developer & Mobile App Architect",
+  category: "Mobile Application",
+  duration: "Commercial Project",
+  teamSize: "Team project",
+  technologies: [
+    "Flutter",
+    "Dart",
+    "Laravel",
+    "mySQL",
+    "Clean Architecture",
+    "Cubit",
+    "REST APIs",
+    "Push Notifications"
+  ],
+  features: [
+    "Submit government complaints with category & location selection",
+    "Attach images/files as evidence",
+    "Track complaint status in real-time (Submitted, In Review, Assigned, Resolved, Rejected)",
+    "Receive push & in-app notifications for every status update",
+    "View complaint history and details",
+    "Manage user profile and settings",
+    "Dark/Light mode",
+    "Supports Arabic (RTL) & English (LTR)"
+  ],
+  screenshots: [
+    `${import.meta.env.BASE_URL}images/complaints app/all.png`,
+     `${import.meta.env.BASE_URL}images/complaints app/auth.png`,
+      `${import.meta.env.BASE_URL}images/complaints app/main.png`,
+       `${import.meta.env.BASE_URL}images/complaints app/show.png`,
+        `${import.meta.env.BASE_URL}images/complaints app/add.png`,
+         `${import.meta.env.BASE_URL}images/complaints app/settings.png`,
+  ],
+  imageUrl: `${import.meta.env.BASE_URL}images/complaints app/all.png`,
+  githubUrl: "https://github.com/MolhamZL1/Complaints-system-app"
+},
     {
       id: "bitarmed",
       title: "BitarMed",
