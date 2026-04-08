@@ -17,7 +17,6 @@ export const userInfo: UserInfo = {
       name: "Frontend",
       icon: "🎨",
       skills: [
-        "Flutter",
         "Responsive & Adaptive UI",
         "REST API Integration",
         "State Management (Bloc, Cubit)",
@@ -32,7 +31,6 @@ export const userInfo: UserInfo = {
         "Express.js",
         "Laravel",
         "Node.js",
-        
         "API Design",
         "Authentication & Authorization"
       ]
@@ -94,93 +92,86 @@ export const userInfo: UserInfo = {
   },
 
   projects: [
-   {
-  id: "Sajilha",
-  title: "Sajilha",
-  shortDescription:
-"Sajelha is the electronic debt ledger for shop owners.",
-  fullDescription:"Instead of relying on a paper ledger or your memory, gather all your customers' debts in one organized place. Know exactly who owes you, how much, and when the last payment was due. Never miss a payment again with automatic reminders sent to your customers via SMS or WhatsApp. Keep your cash flow steady and your business thriving.",
-  myRole: "Flutter Developer & Mobile App Architect",
-  category: "Mobile Application",
-  duration: "Commercial Project",
-  teamSize: "Team project",
-  technologies: [
-    "Flutter",
-    "Dart",
-    "Laravel",
-    "mySQL",
-    "Clean Architecture",
-    "Cubit",
-    "REST APIs",
-   
-  ],
-  features: [
-    "Add & manage customers and their debts",
-    "Record payments and update debt status",
-    "Automatic payment reminders via SMS or WhatsApp",
-    "View debt history and reports",
-    "Manage user profile and settings",
-    "Dark/Light mode",
-    "Supports Arabic (RTL) & English (LTR)"
-  ],
-  screenshots: [
-    `${import.meta.env.BASE_URL}images/sajilha/all.png`,
-      `${import.meta.env.BASE_URL}images/sajilha/1.png`,
-       `${import.meta.env.BASE_URL}images/sajilha/2.png`,
-  ],
-  imageUrl: `${import.meta.env.BASE_URL}images/sajilha/all.png`,
-  liveUrl: "https://sajilha-landing-page-8f577e8d9a56.hosted.ghaymah.systems"
-
-},
-{
-  id: "Complains System",
-  title: "Complains System",
-  shortDescription:
-    "A cross-platform government complaints app for submitting, tracking, and managing public service complaints with smart assistance.",
-  fullDescription:
-    "Complains System is a mobile application for submitting and tracking government service complaints. Users can create complaints, attach evidence (images/files), follow complaint status updates in real time, and receive notifications when the complaint is assigned, updated, or resolved. The app supports both Arabic (RTL) and English (LTR) and includes dark/light mode for a better user experience.",
-  myRole: "Flutter Developer & Mobile App Architect",
-  category: "Mobile Application",
-  duration: "Commercial Project",
-  teamSize: "Team project",
-  technologies: [
-    "Flutter",
-    "Dart",
-    "Laravel",
-    "mySQL",
-    "Clean Architecture",
-    "Cubit",
-    "REST APIs",
-    "Push Notifications"
-  ],
-  features: [
-    "Submit government complaints with category & location selection",
-    "Attach images/files as evidence",
-    "Track complaint status in real-time (Submitted, In Review, Assigned, Resolved, Rejected)",
-    "Receive push & in-app notifications for every status update",
-    "View complaint history and details",
-    "Manage user profile and settings",
-    "Dark/Light mode",
-    "Supports Arabic (RTL) & English (LTR)"
-  ],
-  screenshots: [
-    `${import.meta.env.BASE_URL}images/complaints app/all.png`,
-     `${import.meta.env.BASE_URL}images/complaints app/auth.png`,
-      `${import.meta.env.BASE_URL}images/complaints app/main.png`,
-       `${import.meta.env.BASE_URL}images/complaints app/show.png`,
+    {
+      id: "sajilha",
+      title: "Sajilha",
+      shortDescription: "Sajilha is the electronic debt ledger for shop owners.",
+      fullDescription: "Instead of relying on a paper ledger or your memory, gather all your customers' debts in one organized place. Know exactly who owes you, how much, and when the last payment was due. Never miss a payment again with automatic reminders sent to your customers via SMS or WhatsApp. Keep your cash flow steady and your business thriving.",
+      myRole: "Flutter Developer & Mobile App Architect",
+      category: "Mobile Application",
+      duration: "Commercial Project",
+      teamSize: "Team project",
+      technologies: [
+        "Flutter",
+        "Dart",
+        "Laravel",
+        "mySQL",
+        "Clean Architecture",
+        "Cubit",
+        "REST APIs",
+      ],
+      features: [
+        "Add & manage customers and their debts",
+        "Record payments and update debt status",
+        "Automatic payment reminders via SMS or WhatsApp",
+        "View debt history and reports",
+        "Manage user profile and settings",
+        "Dark/Light mode",
+        "Supports Arabic (RTL) & English (LTR)"
+      ],
+      screenshots: [
+        `${import.meta.env.BASE_URL}images/sajilha/all.png`,
+        `${import.meta.env.BASE_URL}images/sajilha/1.png`,
+        `${import.meta.env.BASE_URL}images/sajilha/2.png`,
+      ],
+      imageUrl: `${import.meta.env.BASE_URL}images/sajilha/all.png`,
+      liveUrl: "https://sajilha-landing-page-8f577e8d9a56.hosted.ghaymah.systems"
+    },
+    {
+      id: "complaints-system",
+      title: "Complaints System",
+      shortDescription: "A cross-platform government complaints app for submitting, tracking, and managing public service complaints with smart assistance.",
+      fullDescription: "Complaints System is a mobile application for submitting and tracking government service complaints. Users can create complaints, attach evidence (images/files), follow complaint status updates in real time, and receive notifications when the complaint is assigned, updated, or resolved. The app supports both Arabic (RTL) and English (LTR) and includes dark/light mode for a better user experience.",
+      myRole: "Flutter Developer & Mobile App Architect",
+      category: "Mobile Application",
+      duration: "Commercial Project",
+      teamSize: "Team project",
+      technologies: [
+        "Flutter",
+        "Dart",
+        "Laravel",
+        "mySQL",
+        "Clean Architecture",
+        "Cubit",
+        "REST APIs",
+        "Push Notifications"
+      ],
+      features: [
+        "Submit government complaints with category & location selection",
+        "Attach images/files as evidence",
+        "Track complaint status in real-time (Submitted, In Review, Assigned, Resolved, Rejected)",
+        "Receive push & in-app notifications for every status update",
+        "View complaint history and details",
+        "Manage user profile and settings",
+        "Dark/Light mode",
+        "Supports Arabic (RTL) & English (LTR)"
+      ],
+      screenshots: [
+        `${import.meta.env.BASE_URL}images/complaints app/all.png`,
+        `${import.meta.env.BASE_URL}images/complaints app/auth.png`,
+        `${import.meta.env.BASE_URL}images/complaints app/main.png`,
+        `${import.meta.env.BASE_URL}images/complaints app/show.png`,
         `${import.meta.env.BASE_URL}images/complaints app/add.png`,
-         `${import.meta.env.BASE_URL}images/complaints app/settings.png`,
-  ],
-  imageUrl: `${import.meta.env.BASE_URL}images/complaints app/all.png`,
-  githubUrl: "https://github.com/MolhamZL1/Complaints-system-app"
-},
+        `${import.meta.env.BASE_URL}images/complaints app/settings.png`,
+      ],
+      imageUrl: `${import.meta.env.BASE_URL}images/complaints app/all.png`,
+      githubUrl: "https://github.com/MolhamZL1/Complaints-system-app"
+    },
     {
       id: "bitarmed",
       title: "BitarMed",
-      shortDescription:
-        "A cross-platform medical devices app for browsing, purchasing, renting, and managing maintenance with AI-powered assistance.",
-      fullDescription:
-        "BitarMed is a mobile application designed for browsing, purchasing, and renting medical devices. The app features an AI-powered chatbot (Gemini) to help users find the right products, submit and track maintenance requests, manage their profiles, and receive real-time updates on orders and rentals. It supports both Arabic (RTL) and English (LTR) and includes dark/light mode for an enhanced user experience.",
+      shortDescription: "A cross-platform medical devices app for browsing, purchasing, renting, and managing maintenance with AI-powered assistance.",
+      fullDescription: "BitarMed is a mobile application designed for browsing, purchasing, and renting medical devices. The app features an AI-powered chatbot (Gemini) to help users find the right products, submit and track maintenance requests, manage their profiles, and receive real-time updates on orders and rentals. It supports both Arabic (RTL) and English (LTR) and includes dark/light mode for an enhanced user experience.",
       myRole: "Flutter Developer & Mobile App Architect",
       category: "Mobile Application",
       duration: "Commercial Project",
@@ -208,7 +199,6 @@ export const userInfo: UserInfo = {
       ],
       screenshots: [
         `${import.meta.env.BASE_URL}images/BitarMed.png`,
-       
       ],
       imageUrl: `${import.meta.env.BASE_URL}images/BitarMed.png`,
       githubUrl: "https://github.com/MolhamZL1/MedTechMobile"
@@ -216,10 +206,8 @@ export const userInfo: UserInfo = {
     {
       id: "safar-way-dashboard",
       title: "Safar Way (Dashboard)",
-      shortDescription:
-        "Tourism management dashboard for trips, places, bookings, and user reviews in Syria.",
-      fullDescription:
-        "Safar Way is a tourism platform that allows users to search for places of interest in Syria and book trips and tours. The dashboard provides tools for managing trips, places, bookings, and user feedback. It enables admins or operators to manage tourism content, monitor reservations, and support a better travel planning experience.",
+      shortDescription: "Tourism management dashboard for trips, places, bookings, and user reviews in Syria.",
+      fullDescription: "Safar Way is a tourism platform that allows users to search for places of interest in Syria and book trips and tours. The dashboard provides tools for managing trips, places, bookings, and user feedback. It enables admins or operators to manage tourism content, monitor reservations, and support a better travel planning experience.",
       myRole: "Flutter Developer (Dashboard Frontend)",
       category: "Web Dashboard / Mobile Integration",
       duration: "Academic Project",
@@ -251,10 +239,8 @@ export const userInfo: UserInfo = {
     {
       id: "chatti",
       title: "Chatti",
-      shortDescription:
-        "Real-time chat application with voice/video calls and rich media sharing built with Flutter.",
-      fullDescription:
-        "Chatti is a real-time chat application built with Flutter that supports text messaging, voice calls, video calls, and media sharing. Users can send images, videos, and audio files, start voice or video calls, switch between them during a call, and receive notifications. The app focuses on smooth communication, secure connections, and a complete modern messaging experience.",
+      shortDescription: "Real-time chat application with voice/video calls and rich media sharing built with Flutter.",
+      fullDescription: "Chatti is a real-time chat application built with Flutter that supports text messaging, voice calls, video calls, and media sharing. Users can send images, videos, and audio files, start voice or video calls, switch between them during a call, and receive notifications. The app focuses on smooth communication, secure connections, and a complete modern messaging experience.",
       myRole: "Flutter Developer",
       category: "Mobile Application",
       duration: "Personal Project",
@@ -279,18 +265,15 @@ export const userInfo: UserInfo = {
       ],
       screenshots: [
         `${import.meta.env.BASE_URL}images/chat_app_screens.png`,
-        `${import.meta.env.BASE_URL}images/chat_app_screens.png`
       ],
       imageUrl: `${import.meta.env.BASE_URL}images/chat_app_screens.png`,
       githubUrl: "https://github.com/MolhamZL1/chatti"
     },
     {
       id: "rosemary",
-      title: "Roesmary",
-      shortDescription:
-        "E-commerce mobile app for selling medical products with cart, checkout, and order tracking.",
-      fullDescription:
-        "Roesmary is an e-commerce application built with Flutter for selling medical products. Users can register, log in, browse products by category, view product details, add items to their cart, checkout, and track their orders. The app supports product search, reviews, ratings, and provides a seamless and secure shopping experience for medical products.",
+      title: "Rosemary",
+      shortDescription: "E-commerce mobile app for selling medical products with cart, checkout, and order tracking.",
+      fullDescription: "Rosemary is an e-commerce application built with Flutter for selling medical products. Users can register, log in, browse products by category, view product details, add items to their cart, checkout, and track their orders. The app supports product search, reviews, ratings, and provides a seamless and secure shopping experience for medical products.",
       myRole: "Flutter Developer",
       category: "Mobile E-commerce Application",
       duration: "Personal Project",
@@ -314,7 +297,6 @@ export const userInfo: UserInfo = {
       ],
       screenshots: [
         `${import.meta.env.BASE_URL}images/roesmary.png`,
-      
       ],
       imageUrl: `${import.meta.env.BASE_URL}images/roesmary.png`,
       githubUrl: "https://github.com/MolhamZL1/Rosemary"
